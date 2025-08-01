@@ -6,13 +6,15 @@ class Book:
         self.author = author
         self.year = year
 
-    def display(self):
+    def exhibit_book(self):
         print(f"'{self.title}' {self.author} ({self.year})")
 
 
-class BookManager:
+class BookManager(Book):
     def __init__(self):
         self.books = []
+
+
     # წიგნის დამატება
     def add_book(self):
         print("\nდაამტეთ წიგნი")
@@ -41,7 +43,7 @@ class BookManager:
                 break
 
 
-    # დამატებული წიგნების სია
+    # დამატებული წიგნების სიის ჩვენება
     def display_book_list(self):
         print("\nწიგნების სია:")
         if not self.books:
@@ -50,7 +52,7 @@ class BookManager:
 
         for index, value in enumerate(self.books, 1):
             print(f"{index}. ", end="")
-            value.display()
+            value.exhibit_book()
 
 
 
@@ -74,31 +76,31 @@ class BookManager:
 
 
 # მომხმარებლის ინტერფეისი
-def main():
+def my_function():
     print("კეთილი იყო თქვენი მობრძანება ჩვენს ვებსაიტში")
     manager = BookManager()
 
     while True:
         print("\nმენიუ:")
         print("1. წიგნის დასამატებლად გთხოვთ აირჩიოთ 1-იანი")
-        print("2. წიგნების სანახავად გთხოვთ აირჩიოთ 2-იანი")
-        print("3. წიგნის მისაძებნად გთოვთ აირჩიოთ 3-იანი")
+        print("2. წიგნის მისაძებნად გთოვთ აირჩიოთ 2-იანი")
+        print("3. წიგნების სანახავად გთოვთ აირჩიოთ 3-იანი")
         print("4. გამოსასვლელად გთხოვთ აირჩიოთ 4-იანი")
 
-        choice = input("აირჩიეთ ციფრი (1-4): ")
+        choose_method = input("აირჩიეთ ციფრი (1-4): ")
 
-        if choice == "1":
+        if choose_method == "1":
             manager.add_book()
-        elif choice == "2":
-            manager.display_book_list()
-        elif choice == "3":
+        elif choose_method == "2":
             manager.search_books_by_title()
-        elif choice == "4":
+        elif choose_method == "3":
+            manager.display_book_list()
+        elif choose_method == "4":
             print("\nმადლობას გიხდით ჩვენი საიტით სარგებლობისათვის!")
             break
         else:
             print("გთხოვთ აირჩიოთ ციფრი მხოლოდ 1-4.")
 
 
-main()
+my_function()
 
